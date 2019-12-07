@@ -3,14 +3,41 @@ package train_train;
 
 
 public class Queue_train {
-    Ticket_information Jan1 [] = new Ticket_information [10];
-    Ticket_information Jan2 [] = new Ticket_information [10];
-    Ticket_information Jan3[] = new Ticket_information [10];
-    Ticket_information Jan4 [] = new Ticket_information [10];
-    Ticket_information Jan5 [] = new Ticket_information [10];
-    Ticket_information Jan6 [] = new Ticket_information [10];
-    Ticket_information Jan7 [] = new Ticket_information [10];
+    private int maxsize;
+    private int size;
+    private Ticket_info head;
+    private Ticket_info tail;
     
-    Ticket_information node =;
-    Jan1[0]= new Ticket_information("AI",9907);
+    Queue_train(){
+        this.maxsize=10;
+        this.size=0;
+        this.head=null;
+        this.tail=null;
+    }
+    
+    public void createseat (String date){
+        Ticket_info seat = new Ticket_info(date);
+        Ticket_info current=head;
+        
+        if(head==null){
+            head=seat;
+        }
+        else{
+            while(current.next!=null){
+                current=current.next;
+            }
+            current.next=seat;
+        }
+    }
+    
+    public void display(){
+        Ticket_info temp=head;
+        
+        while(head!=null){
+            head.display();
+            head=head.next;
+        } 
+        head=temp;
+    }
+    
 }
